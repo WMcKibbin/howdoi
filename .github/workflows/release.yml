@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers on tags like v1.0.0, v2.1.3, etc.
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for accurate changelog generation
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.6' # Use a recent Go version
+
+      - name: Install goreleaser
+        run: go install github.com/goreleaser/goreleaser@latest
+
+      - name: Release with goreleaser
+        run: goreleaser --rm-dist --clean --skip-release-notes # Use --skip-release-notes if you manage release notes elsewhere, otherwise remove it.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Uses the default token for actions
+
+
+      # Optional: If you need to publish to a specific repository/package, you might need to add more steps here,
+      # such as setting up credentials for that service.
