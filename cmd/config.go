@@ -35,7 +35,7 @@ func runConfig(cmd *cobra.Command, args []string) error {
 	}
 
 	fmt.Println("\n--- Claude Settings ---")
-	fmt.Printf("Claude model [%s]: ", cfg.Providers.Claude.Model)
+	fmt.Printf("Claude model [%s] (e.g. claude-3-5-sonnet-20240620): ", cfg.Providers.Claude.Model)
 	if val := readLine(reader); val != "" {
 		cfg.Providers.Claude.Model = val
 	}
@@ -45,17 +45,17 @@ func runConfig(cmd *cobra.Command, args []string) error {
 	if val := readLine(reader); val != "" {
 		cfg.Providers.GitHub.Token = val
 	}
-	fmt.Printf("GitHub model [%s]: ", cfg.Providers.GitHub.Model)
+	fmt.Printf("GitHub model [%s] (e.g. gpt-4o): ", cfg.Providers.GitHub.Model)
 	if val := readLine(reader); val != "" {
 		cfg.Providers.GitHub.Model = val
 	}
 
 	fmt.Println("\n--- Ollama Settings ---")
-	fmt.Printf("Ollama host [%s]: ", cfg.Providers.Ollama.Host)
+	fmt.Printf("Ollama host [%s] (e.g. http://localhost:11434): ", cfg.Providers.Ollama.Host)
 	if val := readLine(reader); val != "" {
 		cfg.Providers.Ollama.Host = val
 	}
-	fmt.Printf("Ollama model [%s]: ", cfg.Providers.Ollama.Model)
+	fmt.Printf("Ollama model [%s] (e.g. llama3.2): ", cfg.Providers.Ollama.Model)
 	if val := readLine(reader); val != "" {
 		cfg.Providers.Ollama.Model = val
 	}
