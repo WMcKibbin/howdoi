@@ -25,13 +25,12 @@ archives:
         formats:
           - zip
 
-brews:
+homebrew_casks:
   - repository:
       owner: WMcKibbin
       name: homebrew-tap
     homepage: https://github.com/WMcKibbin/howdoi
     description: AI-powered command-line assistant
-    license: MIT
 
 changelog:
   sort: asc
